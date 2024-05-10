@@ -14,7 +14,7 @@ const routes = [
       { path: 'user', name: "User", component: () => import('../views/User.vue') ,props: true},
     ]
   }
-]
+]    
 
 const router = new VueRouter({
   mode: 'history',
