@@ -6,7 +6,7 @@
     </el-aside>
     <el-container>
       <el-header style="border-bottom: 1px solid #ccc">
-        <Header />
+        <Header :collapse="collapse" />
       </el-header>
       <el-main>
         <router-view />
@@ -27,8 +27,7 @@ export default {
   },
   data() {
     return {
-      sideWidth: 200,
-      logoTextShow: true
+      sideWidth: 205,
     }
   }
 }
