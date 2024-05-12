@@ -19,6 +19,31 @@
         :default-value="defaultMonthDate"
       >
       </el-date-picker>
+
+      <el-dropdown>
+        <el-button style="margin-left: 30px">
+          注文状況<i class="el-icon-arrow-down el-icon--right"></i>
+        </el-button>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item>受取</el-dropdown-item>
+          <el-dropdown-item>配送中</el-dropdown-item>
+          <el-dropdown-item>在庫保留</el-dropdown-item>
+          <el-dropdown-item>営業確認中</el-dropdown-item>
+          <el-dropdown-item>部長確認中</el-dropdown-item>
+          <el-dropdown-item>キャンセル中</el-dropdown-item>
+          <el-dropdown-item>キャンセル済み</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+
+      <span class="demonstration"></span>
+      <el-cascader
+        placeholder="配送方式"
+        v-model="value"
+        :options="options"
+        :props="{ expandTrigger: 'hover' }"
+        @change="handleChange"
+      >
+      </el-cascader>
     </div>
     <el-row>
       <el-button
@@ -99,6 +124,22 @@
           min-width="10%"
           align="center"
         >
+          <template slot="header">
+            <el-dropdown>
+              <el-button type="text" style="">
+                注文状況 <i class="el-icon-arrow-down el-icon--right"></i>
+              </el-button>
+              <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item>受取</el-dropdown-item>
+                <el-dropdown-item>配送中</el-dropdown-item>
+                <el-dropdown-item>在庫保留</el-dropdown-item>
+                <el-dropdown-item>営業確認中</el-dropdown-item>
+                <el-dropdown-item>部長確認中</el-dropdown-item>
+                <el-dropdown-item>キャンセル中</el-dropdown-item>
+                <el-dropdown-item>キャンセル済み</el-dropdown-item>
+              </el-dropdown-menu>
+            </el-dropdown>
+          </template>
         </el-table-column>
         <el-table-column
           prop="deliveryAddress"
@@ -113,6 +154,19 @@
           min-width="10%"
           align="center"
         >
+          <template slot="header">
+            <el-dropdown>
+              <el-button type="text" style="">
+                配送方法 <i class="el-icon-arrow-down el-icon--right"></i>
+              </el-button>
+              <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item>ヤマト運輸</el-dropdown-item>
+                <el-dropdown-item>郵便局</el-dropdown-item>
+                <el-dropdown-item>佐川急便</el-dropdown-item>
+                <el-dropdown-item>西濃運輸</el-dropdown-item>
+              </el-dropdown-menu>
+            </el-dropdown>
+          </template>
         </el-table-column>
         <el-table-column
           prop="test"
@@ -173,6 +227,141 @@ export default {
       total: 0,
       pageNum: 1,
       pageSize: 5,
+      value: [],
+      options: [
+        {
+          value: "haiwai",
+          label: "海外",
+          children: [
+            {
+              value: "yamato",
+              label: "ヤマト運輸",
+              children: [
+                {
+                  value: "yamatohaiyun",
+                  label: "海上輸送",
+                },
+                {
+                  value: "yamatokongyun",
+                  label: "航空輸送",
+                },
+              ],
+            },
+            {
+              value: "youbianju",
+              label: "郵便局",
+              children: [
+                {
+                  value: "youbianjuhaiyun",
+                  label: "海上輸送",
+                },
+                {
+                  value: "youbianjukongyun",
+                  label: "航空輸送",
+                },
+                
+              ],
+            },
+            {
+              value: "zuochuanjibian",
+              label: "佐川急便",
+              children: [
+                {
+                  value: "zuochuankongyun",
+                  label: "航空輸送",
+                },
+                
+              ],
+            },
+            {
+              value: "xinongyunshu",
+              label: "西濃運輸",
+              children: [
+                {
+                  value: "xinongkongyun",
+                  label: "航空輸送",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          value: "guonei",
+          label: "国内",
+          children: [
+            {
+              value: "yamato",
+              label: "ヤマト運輸",
+              children: [
+                {
+                  value: "yamatozhaijibian",
+                  label: "宅急便",
+                },
+                {
+                  value: "yamatohaiyun",
+                  label: "海上輸送",
+                },
+                {
+                  value: "yamatokongyun",
+                  label: "航空輸送",
+                },
+              ],
+            },
+            {
+              value: "youbianju",
+              label: "郵便局",
+              children: [
+                {
+                  value: "youbianjuzhaijibian",
+                  label: "宅急便",
+                },
+                {
+                  value: "youbianjukuaisu",
+                  label: "スピード便",
+                },
+                {
+                  value: "youbianjuhaiyun",
+                  label: "海上輸送",
+                },
+                {
+                  value: "youbianjukongyun",
+                  label: "航空輸送",
+                },
+                
+              ],
+            },
+            {
+              value: "zuochuanjibian",
+              label: "佐川急便",
+              children: [
+                {
+                  value: "zuochuanzhaijibian",
+                  label: "宅急便",
+                },
+                {
+                  value: "zuochuankongyun",
+                  label: "航空輸送",
+                },
+                
+              ],
+            },
+            {
+              value: "xinongyunshu",
+              label: "西濃運輸",
+              children: [
+                {
+                  value: "xinongkuaisu",
+                  label: "スピード便",
+                },
+                {
+                  value: "xinongkongyun",
+                  label: "航空輸送",
+                },
+              ],
+            },
+          ],
+        },
+      ],
       defaultMonthDate: start, // 设置默认值为上个月的第一天
       pickerOptions: {
         shortcuts: [
@@ -283,6 +472,4 @@ export default {
   },
 };
 </script>
-
-
 
