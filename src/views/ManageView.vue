@@ -6,7 +6,7 @@
     </el-aside>
     <el-container>
       <el-header style="border-bottom: 1px solid #ccc">
-        <Header :collapse="collapse" />
+        <Header />
       </el-header>
       <el-main>
         <router-view />
