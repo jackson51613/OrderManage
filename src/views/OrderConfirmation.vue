@@ -17,6 +17,7 @@ export default {
         return {
             showBackButton: true, // 控制是否显示 "戻る" 按钮的变量
             returnData: ''
+
         }
     },
     props: {
