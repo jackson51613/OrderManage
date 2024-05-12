@@ -23,6 +23,7 @@
         </el-dropdown-menu>
       </el-dropdown>
 
+
     </div>
     <el-row>
       <el-button type="success" @click="select" style="transform: translateX(10px)">検索<i class="el-icon-search"
@@ -55,7 +56,7 @@
         </el-table-column>
         <el-table-column prop="totalPrice" label="合計金額" min-width="10%" align="right" header-align="right">
         </el-table-column>
-        <el-table-column prop="orderStatus" label="注文状況" min-width="10%" align="center">
+
           <template slot="header">
             <el-dropdown>
               <el-button type="text" style="">
@@ -75,7 +76,7 @@
         </el-table-column>
         <el-table-column prop="deliveryAddress" label="お届け先" min-width="30%" header-align="center">
         </el-table-column>
-        <el-table-column prop="deliveryMethod" label="配送方法" min-width="10%" align="center">
+
           <template slot="header">
             <el-dropdown>
               <el-button type="text" style="">
@@ -124,6 +125,141 @@ export default {
       total: 0,
       pageNum: 1,
       pageSize: 5,
+      value: [],
+      options: [
+        {
+          value: "haiwai",
+          label: "海外",
+          children: [
+            {
+              value: "yamato",
+              label: "ヤマト運輸",
+              children: [
+                {
+                  value: "yamatohaiyun",
+                  label: "海上輸送",
+                },
+                {
+                  value: "yamatokongyun",
+                  label: "航空輸送",
+                },
+              ],
+            },
+            {
+              value: "youbianju",
+              label: "郵便局",
+              children: [
+                {
+                  value: "youbianjuhaiyun",
+                  label: "海上輸送",
+                },
+                {
+                  value: "youbianjukongyun",
+                  label: "航空輸送",
+                },
+                
+              ],
+            },
+            {
+              value: "zuochuanjibian",
+              label: "佐川急便",
+              children: [
+                {
+                  value: "zuochuankongyun",
+                  label: "航空輸送",
+                },
+                
+              ],
+            },
+            {
+              value: "xinongyunshu",
+              label: "西濃運輸",
+              children: [
+                {
+                  value: "xinongkongyun",
+                  label: "航空輸送",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          value: "guonei",
+          label: "国内",
+          children: [
+            {
+              value: "yamato",
+              label: "ヤマト運輸",
+              children: [
+                {
+                  value: "yamatozhaijibian",
+                  label: "宅急便",
+                },
+                {
+                  value: "yamatohaiyun",
+                  label: "海上輸送",
+                },
+                {
+                  value: "yamatokongyun",
+                  label: "航空輸送",
+                },
+              ],
+            },
+            {
+              value: "youbianju",
+              label: "郵便局",
+              children: [
+                {
+                  value: "youbianjuzhaijibian",
+                  label: "宅急便",
+                },
+                {
+                  value: "youbianjukuaisu",
+                  label: "スピード便",
+                },
+                {
+                  value: "youbianjuhaiyun",
+                  label: "海上輸送",
+                },
+                {
+                  value: "youbianjukongyun",
+                  label: "航空輸送",
+                },
+                
+              ],
+            },
+            {
+              value: "zuochuanjibian",
+              label: "佐川急便",
+              children: [
+                {
+                  value: "zuochuanzhaijibian",
+                  label: "宅急便",
+                },
+                {
+                  value: "zuochuankongyun",
+                  label: "航空輸送",
+                },
+                
+              ],
+            },
+            {
+              value: "xinongyunshu",
+              label: "西濃運輸",
+              children: [
+                {
+                  value: "xinongkuaisu",
+                  label: "スピード便",
+                },
+                {
+                  value: "xinongkongyun",
+                  label: "航空輸送",
+                },
+              ],
+            },
+          ],
+        },
+      ],
       defaultMonthDate: start, // 设置默认值为上个月的第一天
       pickerOptions: {
         shortcuts: [
