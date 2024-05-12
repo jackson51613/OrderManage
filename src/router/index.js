@@ -11,7 +11,20 @@ const routes = [
     //重定向
     redirect: '/user',
     children: [
-      { path: 'user', name: "User", component: () => import('../views/User.vue') ,props: true},
+      { path: 'user', name: "User", component: () => import('../views/User.vue'), props: true },
+      { 
+        path: 'neworder', 
+        name: "NewOrder", 
+        component: () => import('../views/NewOrder.vue'),
+        redirect: 'neworder/orderlist',
+        // 添加子路由
+        children: [
+          { path: 'orderlist', name: "OrderList", component: () => import('../views/ProductSelection.vue'), props: true },
+          { path: 'shippingandbilling', name: "ShippingAndBilling", component: () => import('../views/ShippingAndBilling.vue'), props: true },
+          { path: 'orderconfirmation', name: "OrderConfirmation", component: () => import('../views/OrderConfirmation.vue'), props: true }
+        ]
+      }
+      
     ]
   }
 ]    
