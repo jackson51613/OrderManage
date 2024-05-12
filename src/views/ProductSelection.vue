@@ -84,7 +84,6 @@ export default {
             ],
             drawer: false,
             direction: 'rtl',
-
         }
     },
     created() {

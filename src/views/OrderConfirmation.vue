@@ -21,7 +21,6 @@ export default {
         data: String
     },
     created() {
-        console.log(this.data);
     },
     methods: {
         next() {
