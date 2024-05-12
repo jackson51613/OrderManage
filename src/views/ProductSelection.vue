@@ -8,11 +8,11 @@
 
         <div style="margin-top: 50px;">
             <el-table :data="tableData" stripe style="width: 100%">
-                <el-table-column prop="date" label="商品名" width="180">
+                <el-table-column prop="name" label="商品名" width="180">
                 </el-table-column>
-                <el-table-column prop="name" label="商品単価" width="180">
+                <el-table-column prop="unitprice" label="商品単価" width="180">
                 </el-table-column>
-                <el-table-column prop="address" label="商品数量">
+                <el-table-column prop="quantity" label="商品数量">
                 </el-table-column>
                 <el-table-column prop="specification" label="商品規格">
                 </el-table-column>
@@ -34,11 +34,11 @@
         </div>
         <el-drawer title="注文リスト" :visible.sync="drawer" :direction="direction" :before-close="handleClose">
             <el-table :data="tableData" border style="width: 100%">
-                <el-table-column prop="date" label="商品名" width="180">
+                <el-table-column prop="name" label="商品名" width="180">
                 </el-table-column>
-                <el-table-column prop="name" label="商品単価" width="180">
+                <el-table-column prop="unitprice" label="商品単価" width="180">
                 </el-table-column>
-                <el-table-column prop="address" label="商品数量">
+                <el-table-column prop="quantity" label="商品数量">
                 </el-table-column>
                 <el-table-column prop="specification" label="商品規格">
                 </el-table-column>
@@ -47,8 +47,10 @@
                 </el-table-column>
             </el-table>
             <div style="position: fixed; bottom: 0; right: 0; margin-right: 50px; margin-bottom: 50px;">
+                <el-button type="primary" @click="clearAllOrder">カートクリア</el-button>
                 <el-button type="primary" @click="next">次の手順</el-button>
             </div>
+
         </el-drawer>
     </div>
 </template>
@@ -64,21 +66,21 @@ export default {
             pageSize: 5,
             tableData: [
                 {
-                    date: '2024-05-12',
                     name: '商品A',
-                    address: '¥100',
+                    unitprice: '300',
+                    quantity: '100',
                     specification: 'Small'
                 },
                 {
-                    date: '2024-05-11',
                     name: '商品B',
-                    address: '¥200',
+                    unitprice: '400',
+                    quantity: '100',
                     specification: 'Medium'
                 },
                 {
-                    date: '2024-05-10',
                     name: '商品C',
-                    address: '¥150',
+                    unitprice: '500',
+                    quantity: '100',
                     specification: 'Large'
                 }
             ],
@@ -101,6 +103,9 @@ export default {
                     done();
                 })
                 .catch(_ => { });
+        },
+        clearAllOrder() {
+            console.log("カートクリア");
         },
         next() {
             const data = 'OrderList';

@@ -5,6 +5,7 @@
                 :props="{ expandTrigger: 'hover' }" @change="handleChange"> </el-cascader>
         </div>
         <div style="position: fixed; bottom: 0; right: 0; margin-right: 50px; margin-bottom: 50px;">
+            <el-button type="primary" @click="back">戻る</el-button>
             <el-button type="primary" @click="next">次の手順</el-button>
         </div>
     </div>
@@ -32,6 +33,9 @@ export default {
         next() {
             this.returnData = this.data + '->ShippingAndBilling(' + this.deliveryData + ')';
             this.$emit('next', this.returnData);
+        },
+        back() {
+            this.$emit('back');
         }
     }
 }
