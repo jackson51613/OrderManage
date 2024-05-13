@@ -1,18 +1,22 @@
 <template>
     <div>
-        <div style="text-align: left;">
-            <el-input placeholder="请输入内容" style="width: 200px;"></el-input>
-            <el-button>默认按钮</el-button>
-
+        <div style="text-align: left; margin-top: 20px">
+            <el-input placeholder="商品名を入力してください" style="width: 200px;"></el-input>
         </div>
 
+        <div style="text-align: left; margin-top: 20px;">
+            <el-input placeholder="最低価格" style="width: 200px;"></el-input>
+            <span style="margin: 0 10px;">~</span>
+            <el-input placeholder="最高価格" style="width: 200px;"></el-input>
+            <el-button type="success" style="margin-left: 15px;">検索</el-button>
+        </div>
         <div style="margin-top: 50px;">
-            <el-table :data="tableData" stripe style="width: 100%">
+            <el-table :data="tableData" border stripe style="width: 100%" :header-cell-style="{ background: '#eee' }">
                 <el-table-column prop="name" label="商品名" width="180">
                 </el-table-column>
                 <el-table-column prop="unitprice" label="商品単価" width="180">
                 </el-table-column>
-                <el-table-column prop="quantity" label="商品数量">
+                <el-table-column prop="stockstatus" label="在庫状況">
                 </el-table-column>
                 <el-table-column prop="specification" label="商品規格">
                 </el-table-column>
@@ -34,11 +38,15 @@
         </div>
         <el-drawer title="注文リスト" :visible.sync="drawer" :direction="direction" :before-close="handleClose">
             <el-table :data="tableData" border style="width: 100%">
-                <el-table-column prop="name" label="商品名" width="180">
+                <el-table-column prop="name" label="商品名" width="100">
                 </el-table-column>
-                <el-table-column prop="unitprice" label="商品単価" width="180">
+                <el-table-column prop="unitprice" label="商品単価" width="100">
                 </el-table-column>
-                <el-table-column prop="quantity" label="商品数量">
+                <el-table-column prop="quantity" label="商品数量" width="180" rules="quantityRules">
+                    <template slot-scope="scope">
+                        <el-input v-model="scope.row.quantity" @change="handleQuantityChange(scope.row)"
+                            @keyup.enter.native="saveQuantity(scope.row)" size="mini"></el-input>
+                    </template>
                 </el-table-column>
                 <el-table-column prop="specification" label="商品規格">
                 </el-table-column>
@@ -64,28 +72,32 @@ export default {
             total: 0,
             pageNum: 1,
             pageSize: 5,
+            drawer: false,
+            direction: 'rtl',
+            num: 1,
             tableData: [
                 {
                     name: '商品A',
                     unitprice: '300',
-                    quantity: '100',
-                    specification: 'Small'
+                    stockstatus: '在庫あり',
+                    specification: 'Small',
+                    quantity: '100'
                 },
                 {
                     name: '商品B',
                     unitprice: '400',
-                    quantity: '100',
-                    specification: 'Medium'
+                    stockstatus: '残りわずか',
+                    specification: 'Medium',
+                    quantity: '200'
                 },
                 {
                     name: '商品C',
                     unitprice: '500',
-                    quantity: '100',
-                    specification: 'Large'
+                    stockstatus: '入荷待ち',
+                    specification: 'Large',
+                    quantity: '300'
                 }
             ],
-            drawer: false,
-            direction: 'rtl',
         }
     },
     created() {
@@ -110,7 +122,13 @@ export default {
         next() {
             const data = 'OrderList';
             this.$emit('next', data);
-        }
+        },
+        handleQuantityChange(row) {
+        },
+        saveQuantity(row) {
+            console.log("保存商品数量:", row.quantity);
+        },
+
     }
 }
 </script>
