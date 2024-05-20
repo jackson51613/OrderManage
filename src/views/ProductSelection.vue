@@ -8,6 +8,12 @@
             <el-input placeholder="最低価格" style="width: 200px;"></el-input>
             <span style="margin: 0 10px;">~</span>
             <el-input placeholder="最高価格" style="width: 200px;"></el-input>
+        </div>
+        <div style="text-align: left; margin-top: 20px">
+            <el-select v-model="value" placeholder="在庫状況を選んでください">
+                <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                </el-option>
+            </el-select>
             <el-button type="success" style="margin-left: 15px;">検索</el-button>
         </div>
         <div style="margin-top: 50px;">
@@ -27,7 +33,7 @@
         </div>
         <div style="position: fixed; bottom: 0; right: 0; margin-right: 50px; margin-bottom: 50px;">
             <el-button @click="drawer = true" style="margin-left: 16px;">
-                注文確認
+                注文リスト
             </el-button>
         </div>
         <div style="padding: 10px;position: fixed; bottom: 0; margin-right: 50px; margin-bottom: 50px;">
@@ -98,6 +104,17 @@ export default {
                     quantity: '300'
                 }
             ],
+            options: [{
+                value: '选项1',
+                label: '在庫あり'
+            }, {
+                value: '选项2',
+                label: '残りわずか'
+            }, {
+                value: '选项3',
+                label: '入荷待ち'
+            }],
+            value: ''
         }
     },
     created() {
