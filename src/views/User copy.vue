@@ -14,7 +14,7 @@
           配送状況<i class="el-icon-arrow-down el-icon--right"></i>
         </el-button>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item>未配送</el-dropdown-item>
+          <el-dropdown-item>未配送324432</el-dropdown-item>
           <el-dropdown-item>配送中</el-dropdown-item>
           <el-dropdown-item>配送済み</el-dropdown-item>
         </el-dropdown-menu>
