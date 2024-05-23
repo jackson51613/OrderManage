@@ -57,7 +57,7 @@
         <el-table-column prop="orderStatus" label="注文状況" min-width="10%" align="center">
           <template slot="header">
             <el-dropdown>
-              <el-button type="text" style="">
+              <el-button type="text">
                 注文状況 <i class="el-icon-arrow-down el-icon--right"></i>
               </el-button>
               <el-dropdown-menu slot="dropdown">
@@ -90,10 +90,10 @@
           </template>
         </el-table-column>
         <el-table-column prop="test" label="操作" min-width="10%" align="center">
-          <el-tooltip content="編集" placement="top" @click="editOrder">
+          <el-tooltip content="支払い" placement="top" @click.native="payment">
             <el-button type="primary" icon="el-icon-edit" circle size="mini"></el-button>
           </el-tooltip>
-          <el-tooltip content="キャメル" placement="top" @click="cancelOrder">
+          <el-tooltip content="キャンセル" placement="top" @click="cancelOrder">
             <el-button type="danger" icon="el-icon-s-release" circle size="mini"></el-button>
           </el-tooltip>
           <el-tooltip content="再購入" placement="top" @click="reBuy">
@@ -108,13 +108,26 @@
         </el-pagination>
       </div>
     </div>
+    <div>
+ <payment :dialogTableVisible.sync="flag">
+
+
+ </payment>
+
+
+    </div>
   </div>
 </template>
 
 
 <script>
+
+import Payment from './Payment.vue';
 export default {
   name: "User",
+  components: {
+    Payment,
+  },
   data() {
     const end = new Date(); // 当前日期
     const start = new Date(end.getFullYear(), end.getMonth() - 1, 1); // 上个月的第一天
@@ -187,7 +200,9 @@ export default {
         },
       ],
       value2: "",
+      flag:false
     };
+    
   },
   props: {},
   methods: {
@@ -227,7 +242,10 @@ export default {
       console.log("pdf");
       //window.open("http://localhost:8084/user/exppdf");
     },
-    editOrder() { },
+    payment() {
+      console.log("editOrder");
+      this.flag = true
+     },
     cancelOrder() { },
     reBuy() { },
   },
