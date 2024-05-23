@@ -14,6 +14,12 @@
                 <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
                 </el-option>
             </el-select>
+        </div>
+        <div style="text-align: left; margin-top: 20px">
+            <el-select v-model="value" placeholder="在庫状況を選んでください">
+                <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                </el-option>
+            </el-select>
             <el-button type="success" style="margin-left: 15px;">検索</el-button>
         </div>
         <div style="margin-top: 50px;">
@@ -104,6 +110,17 @@ export default {
                     quantity: '300'
                 }
             ],
+            options: [{
+                value: '选项1',
+                label: '在庫あり'
+            }, {
+                value: '选项2',
+                label: '残りわずか'
+            }, {
+                value: '选项3',
+                label: '入荷待ち'
+            }],
+            value: ''
             options: [{
                 value: '选项1',
                 label: '在庫あり'
