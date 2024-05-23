@@ -1,13 +1,22 @@
 <template>
   <div style="text-align: left">
     <div style="padding: 10px">
-      <b style="color: blueviolet">注文番号</b><el-input  style="font-size: 12px; width: 220px;"></el-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<<<<<<< HEAD:src/views/User copy.vue
+      <b style="color: blueviolet">注文番号士大夫十分</b><el-input  style="font-size: 12px; width: 220px;"></el-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <b style="color: blueviolet">配送番号</b><el-input  style="font-size: 12px; width: 220px"></el-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <b style="color: blueviolet">配送方法</b><el-input  style="font-size: 12px; width: 220px"></el-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
       <b style="color: blueviolet">配送先</b><el-input  style="font-size: 12px; width: 220px"></el-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <b style="color: blueviolet">連絡先</b><el-input  style="font-size: 12px; width: 220px"></el-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
      
      
+=======
+      <el-input placeholder="注文番号を入力してください" style="font-size: 12px; width: 220px"></el-input>
+
+      <el-date-picker v-model="value2" type="daterange" align="left" unlink-panels range-separator="~"
+        start-placeholder="開始日付" end-placeholder="終了日付" :picker-options="pickerOptions" style="margin-left: 30px"
+        :default-value="defaultMonthDate">
+      </el-date-picker>
+>>>>>>> 43b1c80 (2024.5.23):src/views/User.vue
 
       <el-dropdown>
         <el-button style="margin-left: 30px">
@@ -43,6 +52,7 @@
       <el-table :data="items" border stripe :header-cell-style="{ background: '#eee' }"
         @selection-change="handleSelectionChange">
         <el-table-column type="selection"> </el-table-column>
+<<<<<<< HEAD:src/views/User copy.vue
         <el-table-column prop="orderNumber" label="配送No." min-width="10%" header-align="center">
         </el-table-column>
         <el-table-column prop="orderDate" label="注文番号" min-width="10%" align="center" header-align="center">
@@ -59,6 +69,18 @@
         </el-table-column>
         <el-table-column prop="orderStatus" label="メモ" min-width="10%" align="center">
           <!-- <template slot="header">
+=======
+        <el-table-column prop="orderNumber" label="注文番号" min-width="10%" header-align="center">
+        </el-table-column>
+        <el-table-column prop="orderDate" label="注文日" min-width="10%" align="center" header-align="center">
+        </el-table-column>
+        <el-table-column prop="orderQuantity" label="注文数量" min-width="10%" align="right" header-align="center">
+        </el-table-column>
+        <el-table-column prop="totalPrice" label="合計金額" min-width="10%" align="right" header-align="right">
+        </el-table-column>
+        <el-table-column prop="orderStatus" label="注文状況" min-width="10%" align="center">
+          <template slot="header">
+>>>>>>> 43b1c80 (2024.5.23):src/views/User.vue
             <el-dropdown>
               <el-button type="text" style="">
                 注文状況 <i class="el-icon-arrow-down el-icon--right"></i>
@@ -111,6 +133,17 @@
         </el-pagination>
       </div>
     </div>
+<<<<<<< HEAD:src/views/User copy.vue
+=======
+    <div>
+      <payment :dialogTableVisible.sync="flag">
+
+
+      </payment>
+
+
+    </div>
+>>>>>>> 43b1c80 (2024.5.23):src/views/User.vue
   </div>
 </template>
 
@@ -190,7 +223,13 @@ export default {
         },
       ],
       value2: "",
+<<<<<<< HEAD:src/views/User copy.vue
     };
+=======
+      flag: false
+    };
+
+>>>>>>> 43b1c80 (2024.5.23):src/views/User.vue
   },
   props: {},
   methods: {
@@ -230,7 +269,14 @@ export default {
       console.log("pdf");
       //window.open("http://localhost:8084/user/exppdf");
     },
+<<<<<<< HEAD:src/views/User copy.vue
     editOrder() { },
+=======
+    payment() {
+      console.log("editOrder");
+      this.flag = true
+    },
+>>>>>>> 43b1c80 (2024.5.23):src/views/User.vue
     cancelOrder() { },
     reBuy() { },
   },
