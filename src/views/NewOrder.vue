@@ -3,7 +3,7 @@
         <div style="text-align: center;">
             <div style="display: inline-block; text-align: left; width: 50%;">
                 <el-steps :active="active" finish-status="success">
-                    <el-step title="商品選択"></el-step>
+                    <el-step title="商品選択中毛"></el-step>
                     <el-step title="配送＆支払"></el-step>
                     <el-step title="確認"></el-step>
                 </el-steps>
