@@ -2,8 +2,16 @@
   <div style="text-align: left">
     <div style="padding: 10px">
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD:src/views/User copy.vue
       <b style="color: blueviolet">注文番号我就不信邪</b><el-input  style="font-size: 12px; width: 220px;"></el-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+=======
+      <b style="color: blueviolet">注文番号中毛不信邪</b><el-input  style="font-size: 12px; width: 220px;"></el-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+=======
+<<<<<<< HEAD:src/views/User copy.vue
+      <b style="color: blueviolet">注文番号士大夫十分</b><el-input  style="font-size: 12px; width: 220px;"></el-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+>>>>>>> 1a65a48174875bf3359797fd81b4e233098b7bb4
+>>>>>>> 5f67bcf3c83eadb403e765f89c954ff2b8807354
       <b style="color: blueviolet">配送番号</b><el-input  style="font-size: 12px; width: 220px"></el-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <b style="color: blueviolet">配送方法</b><el-input  style="font-size: 12px; width: 220px"></el-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
       <b style="color: blueviolet">配送先</b><el-input  style="font-size: 12px; width: 220px"></el-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
