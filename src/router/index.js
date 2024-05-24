@@ -6,13 +6,13 @@ Vue.use(VueRouter)
 const routes = [{
   path: '/',
   name: 'ManageView',
-  component: () => import('../views/ManageView.vue'),
+  component: () => import('../views/ManageView copy.vue'),
   //重定向
   redirect: '/user',
   children: [{
       path: 'user',
-      name: "User",
-      component: () => import('../views/User.vue'),
+      name: 'User',
+      component: () => import('../views/User copy.vue'),
       props: true
     },
     {

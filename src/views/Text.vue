@@ -7,7 +7,7 @@
       label-width="100px"
       class="demo-ruleForm scrollable-form"
     >
-      <div class="inputBox">ご配送：ddddddddddd</div>
+      <div class="inputBox">ご配送：</div>
 
       <el-form-item label="お名前:" prop="name" class="inputBox">
         <el-input v-model="ruleForm.name"></el-input>
