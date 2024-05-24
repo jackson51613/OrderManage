@@ -1,7 +1,7 @@
 <template>
   <div style="text-align: left">
     <div style="padding: 10px">
-      <b style="color: blueviolet">注文番号</b><el-input  style="font-size: 12px; width: 220px;"></el-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <b style="color: blueviolet">注文番号中毛不信邪</b><el-input  style="font-size: 12px; width: 220px;"></el-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <b style="color: blueviolet">配送番号</b><el-input  style="font-size: 12px; width: 220px"></el-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <b style="color: blueviolet">配送方法</b><el-input  style="font-size: 12px; width: 220px"></el-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
       <b style="color: blueviolet">配送先</b><el-input  style="font-size: 12px; width: 220px"></el-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
