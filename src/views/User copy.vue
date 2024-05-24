@@ -4,9 +4,8 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD:src/views/User copy.vue
-      <b style="color: blueviolet">注文番号我就不信邪</b><el-input  style="font-size: 12px; width: 220px;"></el-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-=======
-      <b style="color: blueviolet">注文番号中毛不信邪</b><el-input  style="font-size: 12px; width: 220px;"></el-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ 
+      <b style="color: blueviolet">注文番号中毛很厉害</b><el-input  style="font-size: 12px; width: 220px;"></el-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 =======
 <<<<<<< HEAD:src/views/User copy.vue
       <b style="color: blueviolet">注文番号士大夫十分</b><el-input  style="font-size: 12px; width: 220px;"></el-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
