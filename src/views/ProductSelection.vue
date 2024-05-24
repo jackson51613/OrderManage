@@ -32,8 +32,13 @@
             </el-table>
         </div>
         <div style="position: fixed; bottom: 0; right: 0; margin-right: 50px; margin-bottom: 50px;">
+<<<<<<< HEAD
             <el-button @click="drawer = true" style="margin-left: 16px;">
                 注文リスト
+=======
+            <el-button @click="drawer = true" style="margin-left: 16px;"><i class=el-icon-goods>
+                    注文確認</i>
+>>>>>>> 43b1c80 (2024.5.23)
             </el-button>
         </div>
         <div style="padding: 10px;position: fixed; bottom: 0; margin-right: 50px; margin-bottom: 50px;">
@@ -48,9 +53,15 @@
                 </el-table-column>
                 <el-table-column prop="unitprice" label="商品単価" width="100">
                 </el-table-column>
+<<<<<<< HEAD
                 <el-table-column prop="quantity" label="商品数量" width="180" rules="quantityRules">
                     <template slot-scope="scope">
                         <el-input v-model="scope.row.quantity" @change="handleQuantityChange(scope.row)"
+=======
+                <el-table-column prop="quantity" label="商品数量" width="180" align="right">
+                    <template slot-scope="scope">
+                        <el-input align="right" v-model="scope.row.quantity" @change="handleQuantityChange(scope.row)"
+>>>>>>> 43b1c80 (2024.5.23)
                             @keyup.enter.native="saveQuantity(scope.row)" size="mini"></el-input>
                     </template>
                 </el-table-column>
@@ -114,6 +125,20 @@ export default {
                 value: '选项3',
                 label: '入荷待ち'
             }],
+<<<<<<< HEAD
+=======
+            value: '',
+            options: [{
+                value: '选项1',
+                label: '在庫あり'
+            }, {
+                value: '选项2',
+                label: '残りわずか'
+            }, {
+                value: '选项3',
+                label: '入荷待ち'
+            }],
+>>>>>>> 43b1c80 (2024.5.23)
             value: ''
         }
     },
