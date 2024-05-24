@@ -1,64 +1,79 @@
 <template>
   <div style="text-align: left">
     <div style="padding: 10px">
-      <b style="color: blueviolet">注文番号</b><el-input  style="font-size: 12px; width: 220px;"></el-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <b style="color: blueviolet">配送番号</b><el-input  style="font-size: 12px; width: 220px"></el-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <b style="color: blueviolet">配送方法</b><el-input  style="font-size: 12px; width: 220px"></el-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
-      <b style="color: blueviolet">配送先</b><el-input  style="font-size: 12px; width: 220px"></el-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <b style="color: blueviolet">連絡先</b><el-input  style="font-size: 12px; width: 220px"></el-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-     
-     
+
+      <el-input placeholder="注文番号" style="font-size: 12px; width: 280px"></el-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <el-input placeholder="配送代理店" style="font-size: 12px; width: 280px"></el-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <el-input placeholder="配送先" style="font-size: 12px; width: 280px"></el-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <el-input placeholder="配送予定日" style="font-size: 12px; width: 280px"></el-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <el-input placeholder="商品名" style="font-size: 12px; width: 280px"></el-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
+      <el-input placeholder="配送方法" style="font-size: 12px; width: 280px"></el-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <el-input placeholder="梱包状態" style="font-size: 12px; width: 280px"></el-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+      <!-- <el-date-picker v-model="value2" type="daterange" align="left" unlink-panels range-separator="~"
+        start-placeholder="開始日付" end-placeholder="終了日付" :picker-options="pickerOptions" style="margin-left: 30px"
+        :default-value="defaultMonthDate">
+      </el-date-picker> -->
 
       <el-dropdown>
-        <el-button style="margin-left: 30px">
-          配送状況<i class="el-icon-arrow-down el-icon--right"></i>
-        </el-button>
+        <!-- <el-button style="margin-left: 30px">
+          注文状況<i class="el-icon-arrow-down el-icon--right"></i>
+        </el-button> -->
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item>未配送</el-dropdown-item>
+          <el-dropdown-item>受取</el-dropdown-item>
           <el-dropdown-item>配送中</el-dropdown-item>
-          <el-dropdown-item>配送済み</el-dropdown-item>
+          <el-dropdown-item>在庫保留</el-dropdown-item>
+          <el-dropdown-item>営業確認中</el-dropdown-item>
+          <el-dropdown-item>部長確認中</el-dropdown-item>
+          <el-dropdown-item>キャンセル中</el-dropdown-item>
+          <el-dropdown-item>キャンセル済み</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
     <el-row>
-      <el-button type="success" @click="select" style="transform: translateX(10px)">検索<i class="el-icon-search"
-          style="margin-left: 5px"></i></el-button>
-      <el-button type="info" style="margin-left: 30px; padding-left: 12px" @click="reset">リセット<i class="el-icon-refresh"
+      <el-button type="success" @click="select" style="transform: translateX(10px); float: right;">検索<i class="el-icon-search"
+          style="margin-right: 5px"></i></el-button>
+      <el-button type="info" style="margin-left: 30px; padding-left: 12px; float: right;" @click="reset">clear<i class="el-icon-refresh"
           style="margin-left: 5px"></i></el-button>
       <el-dropdown>
-        <el-button type="primary" style="margin-left: 30px">
-          エクスポート<i class="el-icon-arrow-down el-icon--right"></i>
-        </el-button>
+        <!-- <el-button type="primary" style="margin-left: 30px">
+          一括梱包<i class="el-icon-arrow-down el-icon--right"></i>
+        </el-button> -->
+
+        &nbsp; &nbsp;<el-button type="success" @click="select" style="transform: translateX(10px); float: right;">一括梱包<i class="el-icon-search"
+          style="margin-right: 5px"></i></el-button>
+          <el-button type="success" @click="select" style="transform: translateX(10px); float: left;">一括配送まち<i class="el-icon-search"
+          style="margin-right: 5px"></i></el-button>
+        <!-- <el-button type="primary" style="margin-left: 30px">
+          一括梱包<i class="el-icon-arrow-down el-icon--right"></i>
+        </el-button> -->
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item v-on:click.native="expxlsx">.xlsx</el-dropdown-item>
           <el-dropdown-item v-on:click.native="exppdf">.pdf</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
-      <div style="padding: 10px">
+      <!-- <div style="padding: 10px">
         <el-button type="success" round style="float: right; margin-top: 40px" @click="newOrder"
           icon="el-icon-circle-plus">新規注文</el-button>
-      </div>
+      </div> -->
     </el-row>
     <div style="margin-top: 10px">
       <el-table :data="items" border stripe :header-cell-style="{ background: '#eee' }"
         @selection-change="handleSelectionChange">
         <el-table-column type="selection"> </el-table-column>
-        <el-table-column prop="orderNumber" label="配送No." min-width="10%" header-align="center">
+        <el-table-column prop="orderNumber" label="注文番号" min-width="10%" header-align="center">
         </el-table-column>
-        <el-table-column prop="orderDate" label="注文番号" min-width="10%" align="center" header-align="center">
+        <el-table-column prop="orderDate" label="配送予定日" min-width="10%" align="center" header-align="center">
         </el-table-column>
-        <el-table-column prop="orderQuantity" label="配送方法" min-width="10%" align="right" header-align="center">
+        <el-table-column prop="orderStatus" label="配送代理店" min-width="10%" align="center"></el-table-column>
+        <el-table-column prop="orderQuantity" label="商品総合件数" min-width="10%" align="right" header-align="center">
         </el-table-column>
-        <el-table-column prop="totalPrice" label="配送先" min-width="10%" align="right" header-align="right">
+        <el-table-column prop="totalPrice" label="梱包状態" min-width="10%" align="right" header-align="right">
         </el-table-column>
-        <el-table-column prop="totalPrice" label="連絡先" min-width="10%" align="right" header-align="right">
-        </el-table-column>
-        <el-table-column prop="totalPrice" label="予定配送日" min-width="10%" align="right" header-align="right">
-        </el-table-column>
-        <el-table-column prop="totalPrice" label="配送状態" min-width="10%" align="right" header-align="right">
-        </el-table-column>
-        <el-table-column prop="orderStatus" label="メモ" min-width="10%" align="center">
-          <!-- <template slot="header">
+        <el-table-column prop="orderStatus" label="配送先" min-width="10%" align="center"></el-table-column>
+        
+        <el-table-column prop="orderStatus" label="配送方法" min-width="10%" align="center">
+          <template slot="header">
             <el-dropdown>
               <el-button type="text" style="">
                 注文状況 <i class="el-icon-arrow-down el-icon--right"></i>
@@ -73,7 +88,7 @@
                 <el-dropdown-item>キャンセル済み</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
-          </template> -->
+          </template>
         </el-table-column>
         <el-table-column prop="deliveryAddress" label="お届け先" min-width="30%" header-align="center">
         </el-table-column>
@@ -93,15 +108,15 @@
           </template>
         </el-table-column>
         <el-table-column prop="test" label="操作" min-width="10%" align="center">
-          <el-tooltip content="編集" placement="top" @click="editOrder">
+          <el-tooltip content="梱包" placement="top" @click="editOrder">
             <el-button type="primary" icon="el-icon-edit" circle size="mini"></el-button>
           </el-tooltip>
-          <el-tooltip content="キャメル" placement="top" @click="cancelOrder">
+          <el-tooltip content="配送" placement="top" @click="cancelOrder">
             <el-button type="danger" icon="el-icon-s-release" circle size="mini"></el-button>
           </el-tooltip>
-          <el-tooltip content="再購入" placement="top" @click="reBuy">
+          <!-- <el-tooltip content="再購入" placement="top" @click="reBuy">
             <el-button type="success" icon="el-icon-goods" circle size="mini"></el-button>
-          </el-tooltip>
+          </el-tooltip> -->
         </el-table-column>
       </el-table>
       <div style="padding: 10px">
@@ -163,8 +178,8 @@ export default {
           orderNumber: "A001",
           orderDate: "2024年5月9日",
           orderQuantity: "1000個",
-          totalPrice: 999,
-          orderStatus: "受取",
+          totalPrice: "済み",
+          orderStatus: "東京支店",
           deliveryAddress:
             "2 Chome-16-2 Sotokanda, Chiyoda City, Tokyo 101-0021",
           deliveryMethod: "ヤマト運輸",
@@ -173,8 +188,8 @@ export default {
           orderNumber: "A002",
           orderDate: "2024年5月10日",
           orderQuantity: "1001個",
-          totalPrice: 999,
-          orderStatus: "受取",
+          totalPrice: "済み",
+          orderStatus: "東京支店",
           deliveryAddress:
             "3 Chome-11-3 Sotokanda, Chiyoda City, Tokyo 101-0021",
           deliveryMethod: "郵便局",
@@ -183,8 +198,8 @@ export default {
           orderNumber: "A003",
           orderDate: "2024年5月11日",
           orderQuantity: "1002個",
-          totalPrice: 999,
-          orderStatus: "受取",
+          totalPrice: "未梱包",
+          orderStatus: "埼玉支店",
           deliveryAddress: "2 Chome-4-1 Torigoe, Taito City, Tokyo 111-0054",
           deliveryMethod: "佐川急便",
         },
@@ -236,3 +251,4 @@ export default {
   },
 };
 </script>
+
