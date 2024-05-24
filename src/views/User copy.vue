@@ -116,7 +116,7 @@
       見積作成日:<el-input style="font-size: 12px; width: 110px"></el-input>
       <el-dropdown>
         <el-button style="margin-left: 30px">
-          状態<i class="el-icon-arrow-down el-icon--right"></i>
+          状態aaaaaa<i class="el-icon-arrow-down el-icon--right"></i>
         </el-button>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item>承認待ち</el-dropdown-item>
