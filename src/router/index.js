@@ -39,12 +39,6 @@ const routes = [{
           component: () => import('../views/OrderConfirmation.vue'),
           props: true
         },
-        {
-          path: 'text1',
-          name: "Text1",
-          component: () => import('../views/Text1.vue'),
-          props: true
-        }
       ]
     }
 
