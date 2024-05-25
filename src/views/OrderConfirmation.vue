@@ -14,8 +14,7 @@
             <el-table-column prop="itemTotal" label="単品合計金額" align="center">
             </el-table-column>
         </el-table>
-        <div style="margin-bottom: 30px;"></div>
-        <el-descriptions title="配送方法">
+        <el-descriptions title="配送方法" style="margin-top: 30px;">
             <el-descriptions-item label="名前">
                 <el-tag size="small">岸田太郎</el-tag>
             </el-descriptions-item>
