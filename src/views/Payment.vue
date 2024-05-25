@@ -1,7 +1,7 @@
 <template>
     <div style="text-align: left">
         <el-dialog @close="test" title="收货地址" :visible.sync="dialogTableVisible">
-
+            
         </el-dialog>
     </div>
 </template>
