@@ -7,7 +7,7 @@
         </div>
         <el-submenu index="1">
             <template slot="title"><i class="el-icon-menu"></i>
-                <span slot="title">暫定</span>
+                <span slot="title">見積</span>
             </template>
             <el-menu-item-group>
                 <template slot="title">分组二</template>
