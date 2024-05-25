@@ -79,7 +79,7 @@
         <el-table-column type="selection"> </el-table-column>
         <el-table-column
           prop="orderNumber"
-          label="注文番号"
+          label="注文ID"
           min-width="10%"
           header-align="center"
         >
@@ -164,7 +164,7 @@
           min-width="10%"
           align="center"
         >
-          <el-tooltip content="編集" placement="top" @click="editOrder">
+          <el-tooltip content="详情" placement="top" @click.native="Details">
             <el-button
               type="primary"
               icon="el-icon-edit"
@@ -201,6 +201,8 @@
           :total="total"
         >
         </el-pagination>
+
+        <OrderDetails :isVisible.sync="isDialogVisible"></OrderDetails>
       </div>
     </div>
   </div>
@@ -208,8 +210,12 @@
 
 
 <script>
+import OrderDetails from "@/views/OrderDetails.vue";
 export default {
   name: "User",
+  components: {
+    OrderDetails,
+  },
   data() {
     const end = new Date(); // 当前日期
     const start = new Date(end.getFullYear(), end.getMonth() - 1, 1); // 上个月的第一天
@@ -218,6 +224,7 @@ export default {
       pageNum: 1,
       pageSize: 5,
       defaultMonthDate: start, // 设置默认值为上个月的第一天
+      isDialogVisible: false,
       pickerOptions: {
         shortcuts: [
           {
@@ -311,8 +318,14 @@ export default {
       console.log("reset");
     },
     newOrder() {
-      console.log("newOrder");
-      this.$router.push({ name: "NewOrder" });
+      console.log("Attempting to navigate to NewOrder");
+  this.$router.push({ name: "NewOrder" })
+    .then(() => {
+      console.log("Navigation to NewOrder successful");
+    })
+    .catch((error) => {
+      console.error("Failed to navigate to NewOrder:", error);
+    });
     },
     expxlsx() {
       console.log("xlsx");
@@ -322,7 +335,8 @@ export default {
       console.log("pdf");
       //window.open("http://localhost:8084/user/exppdf");
     },
-    editOrder() {},
+    Details() {
+    },
     cancelOrder() {},
     reBuy() {},
   },

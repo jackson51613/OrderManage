@@ -40,9 +40,9 @@ const routes = [{
           props: true
         },
         {
-          path: 'text',
-          name: "Text",
-          component: () => import('../views/Text.vue'),
+          path: 'text1',
+          name: "Text1",
+          component: () => import('../views/Text1.vue'),
           props: true
         }
       ]
