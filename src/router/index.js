@@ -31,15 +31,6 @@ const routes = [
 
     ]
   },
-
-
-
-  {
-    path: '/abc',
-    name: "Abc",
-    component: () => import('../views/UserCopy.vue'),
-
-  }
 ]
 
 const router = new VueRouter({
