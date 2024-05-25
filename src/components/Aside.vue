@@ -10,9 +10,9 @@
                 <span slot="title">暫定</span>
             </template>
             <el-menu-item-group>
-                <template slot="title">分组一</template>
-                <el-menu-item index="/user">注文管理</el-menu-item>
-                <el-menu-item index="/">受注管理</el-menu-item>
+                <template slot="title">分组二</template>
+                <el-menu-item index="/user">見積一覧</el-menu-item>
+                <el-menu-item index="/">見積明細</el-menu-item>
             </el-menu-item-group>
         </el-submenu>
     </el-menu>
