@@ -43,7 +43,14 @@
       <el-table :data="items" border stripe :header-cell-style="{ background: '#eee' }"
         @selection-change="handleSelectionChange">
         <el-table-column type="selection"> </el-table-column>
-        <el-table-column prop="orderNumber" label="見積番号" min-width="10%" align="center"　header-align="center">
+
+        <el-table-column
+          prop="orderNumber"
+          label="注文ID"
+          min-width="10%"
+          header-align="center"
+        >
+
         </el-table-column>
         <el-table-column prop="orderDate" label="注文番号" min-width="10%" align="center" header-align="center">
         </el-table-column>
@@ -87,9 +94,11 @@
             </el-dropdown>
           </template> -->
         </el-table-column>
+
         <!-- <el-table-column prop="test" label="操作" min-width="10%" align="center">
           <el-tooltip content="支払い" placement="top" @click.native="payment">
             <el-button type="primary" icon="el-icon-edit" circle size="mini"></el-button>
+
           </el-tooltip>
           <el-tooltip content="キャンセル" placement="top" @click="cancelOrder">
             <el-button type="danger" icon="el-icon-s-release" circle size="mini"></el-button>
@@ -104,6 +113,8 @@
           :page-sizes="[5, 10, 15, 20]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper"
           :total="total">
         </el-pagination>
+
+        <OrderDetails :isVisible.sync="isDialogVisible"></OrderDetails>
       </div>
       <div style="padding: 10px">
         <el-button type="success" round style="float: right; margin-top: 40px" @click="newOrder"
@@ -124,11 +135,13 @@
 
 <script>
 
+
 import Payment from './Payment.vue';
 export default {
   name: "User",
   components: {
     Payment,
+
   },
   data() {
     const end = new Date(); // 当前日期
@@ -138,6 +151,7 @@ export default {
       pageNum: 1,
       pageSize: 5,
       defaultMonthDate: start, // 设置默认值为上个月的第一天
+      isDialogVisible: false,
       pickerOptions: {
         shortcuts: [
           {
@@ -233,8 +247,14 @@ export default {
       console.log("reset");
     },
     newOrder() {
-      console.log("newOrder");
-      this.$router.push({ name: "NewOrder" });
+      console.log("Attempting to navigate to NewOrder");
+  this.$router.push({ name: "NewOrder" })
+    .then(() => {
+      console.log("Navigation to NewOrder successful");
+    })
+    .catch((error) => {
+      console.error("Failed to navigate to NewOrder:", error);
+    });
     },
     expxlsx() {
       console.log("xlsx");
@@ -244,6 +264,7 @@ export default {
       console.log("pdf");
       //window.open("http://localhost:8084/user/exppdf");
     },
+
     payment() {
       console.log("editOrder");
       this.flag = true
