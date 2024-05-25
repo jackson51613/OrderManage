@@ -1,7 +1,7 @@
 <template>
   <div style="text-align: left">
     <div style="padding: 10px">
-      見積ID:<el-input  style="font-size: 12px; width: 110px"></el-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      見積ID:<el-input style="font-size: 12px; width: 110px; margin-right: 40px"  ></el-input>
       見積作成日:<el-input style="font-size: 12px; width: 110px"></el-input>
       <el-dropdown>
         <el-button style="margin-left: 30px">
@@ -13,11 +13,10 @@
           <el-dropdown-item>承認済み</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown><br>
-      顧客名:<el-input style="font-size: 12px; width: 110px"></el-input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      営業者名:&nbsp;&nbsp;&nbsp;&nbsp;<el-input style="font-size: 12px; width: 110px"></el-input>
+      顧客名:<el-input style="font-size: 12px; width: 110px"></el-input>
+      営業者名:<span></span><el-input style="font-size: 12px; width: 110px"></el-input>
 
     </div>
-   
     <el-row>
       <br>
       <br>
@@ -26,7 +25,7 @@
     </el-row>
     <div style="margin-top: 10px">
       <el-table :data="items" border stripe :header-cell-style="{ background: '#eee' }"
-      @selection-change="handleSelectionChange" >
+        @selection-change="handleSelectionChange">
         <!-- <el-table-column type="selection"> </el-table-column> -->
         <el-table-column prop="quotationId" label="見積ID" min-width="10%" header-align="left" style="height: 50px;">
         </el-table-column>
@@ -34,7 +33,7 @@
         </el-table-column>
         <el-table-column prop="customerName" label="顧客名" min-width="10%" header-align="left">
         </el-table-column>
-        <el-table-column prop="salesmanId" label="営業者名"  min-width="10%" header-align="left">
+        <el-table-column prop="salesmanId" label="営業者名" min-width="10%" header-align="left">
         </el-table-column>
         <el-table-column prop="quotationCreationDate" label="見積作成日" min-width="10%" header-align="left">
         </el-table-column>
@@ -68,7 +67,7 @@
 
 <script>
 export default {
-  name: "User",
+  name: "abc",
   data() {
     const end = new Date(); // 当前日期
     const start = new Date(end.getFullYear(), end.getMonth() - 1, 1); // 上个月的第一天
@@ -111,8 +110,8 @@ export default {
 
       items: [
         {
-          quotationId:<a href="https://www.baidu.com">A001</a>,
-         
+          quotationId: <a href="https://www.baidu.com">A001</a>,
+
           orderId: "A001",
           customerName: "A",
           salesmanId: "伊藤",
@@ -126,7 +125,7 @@ export default {
           customerName: "B",
           salesmanId: "鶴澤",
           quotationCreationDate: "2024年5月9日",
-          status:"差戻し",
+          status: "差戻し",
           memo: "bbbbbb",
         },
         {
@@ -135,7 +134,7 @@ export default {
           customerName: "C",
           salesmanId: "山本",
           quotationCreationDate: "2024年5月9日",
-          status:"承認済み",
+          status: "承認済み",
           memo: "ccccc",
         },
         {
@@ -144,7 +143,7 @@ export default {
           customerName: "D",
           salesmanId: "本田",
           quotationCreationDate: "2024年5月9日",
-          status:"承認済み",
+          status: "承認済み",
           memo: "dddd",
         },
         {
@@ -153,10 +152,10 @@ export default {
           customerName: "E",
           salesmanId: "安西",
           quotationCreationDate: "2024年5月9日",
-          status:"承認済み",
+          status: "承認済み",
           memo: "eeeeee",
         },
-        
+
 
       ],
       value2: "",
@@ -192,7 +191,7 @@ export default {
       console.log("newOrder");
       this.$router.push({ name: "NewOrder" });
     },
-  
+
     editOrder() { },
     cancelOrder() { },
     reBuy() { },

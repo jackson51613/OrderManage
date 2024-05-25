@@ -24,12 +24,12 @@
       </el-dropdown>
     </div>
     <el-row>
-      <el-button type="success" @click="select" style="transform: translateX(10px)">検索<i class="el-icon-search"
+      <el-button type="success" @click="select" style="transform: translateX(10px); ">検索<i class="el-icon-search"
           style="margin-left: 5px"></i></el-button>
       <el-button type="info" style="margin-left: 30px; padding-left: 12px" @click="reset">リセット<i class="el-icon-refresh"
           style="margin-left: 5px"></i></el-button>
-      <el-dropdown>
-        <el-button type="primary" style="margin-left: 30px">
+      <el-dropdown style="text-align: right;">
+        <el-button type="primary" style="margin-left : 30px;">
           エクスポート<i class="el-icon-arrow-down el-icon--right"></i>
         </el-button>
         <el-dropdown-menu slot="dropdown">
@@ -96,7 +96,7 @@
           <el-tooltip content="キャンセル" placement="top" @click="cancelOrder">
             <el-button type="danger" icon="el-icon-s-release" circle size="mini"></el-button>
           </el-tooltip>
-          <el-tooltip content="再購入" placement="top" @click="reBuy">
+          <el-tooltip content="再購入" placement="top" @click.native="reBuy">
             <el-button type="success" icon="el-icon-goods" circle size="mini"></el-button>
           </el-tooltip>
         </el-table-column>
@@ -247,7 +247,10 @@ export default {
       this.flag = true
     },
     cancelOrder() { },
-    reBuy() { },
+    reBuy() {
+      console.log("test");
+      this.$router.push({ name: "Test" });
+    },
   },
 };
 </script>

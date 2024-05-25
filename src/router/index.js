@@ -12,9 +12,13 @@ const routes = [
     redirect: '/user',
     children: [
       { path: 'user', name: "User", component: () => import('../views/User.vue'), props: true },
-      { 
-        path: 'neworder', 
-        name: "NewOrder", 
+      {
+        path: 'test', name: "Test", component: () => import('../views/test.vue')
+      },
+
+      {
+        path: 'neworder',
+        name: "NewOrder",
         component: () => import('../views/NewOrder.vue'),
         redirect: 'neworder/orderlist',
         // 添加子路由
@@ -24,10 +28,19 @@ const routes = [
           { path: 'orderconfirmation', name: "OrderConfirmation", component: () => import('../views/OrderConfirmation.vue'), props: true }
         ]
       }
-      
+
     ]
   },
-]    
+
+
+
+  {
+    path: '/abc',
+    name: "Abc",
+    component: () => import('../views/UserCopy.vue'),
+
+  }
+]
 
 const router = new VueRouter({
   mode: 'history',
