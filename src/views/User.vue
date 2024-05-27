@@ -1,122 +1,67 @@
 <template>
   <div style="text-align: left">
     <div style="padding: 10px">
-      <el-input
-        placeholder="注文番号を入力してください"
-        style="font-size: 12px; width: 220px"
-      ></el-input>
+      <el-input placeholder="注文番号を入力してください" style="font-size: 12px; width: 220px"></el-input>
 
-      <el-date-picker
-        v-model="value2"
-        type="daterange"
-        align="left"
-        unlink-panels
-        range-separator="~"
-        start-placeholder="開始日付"
-        end-placeholder="終了日付"
-        :picker-options="pickerOptions"
-        style="margin-left: 30px"
-        :default-value="defaultMonthDate"
-      >
+      <el-date-picker v-model="value2" type="daterange" align="left" unlink-panels range-separator="~"
+        start-placeholder="開始日付" end-placeholder="終了日付" :picker-options="pickerOptions" style="margin-left: 30px"
+        :default-value="defaultMonthDate">
       </el-date-picker>
 
       <el-dropdown>
         <el-button style="margin-left: 30px">
-          注文状況<i class="el-icon-arrow-down el-icon--right"></i>
+          見積状況<i class="el-icon-arrow-down el-icon--right"></i>
         </el-button>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item>受取</el-dropdown-item>
+          <!-- <el-dropdown-item>受取</el-dropdown-item>
           <el-dropdown-item>配送中</el-dropdown-item>
-          <el-dropdown-item>在庫保留</el-dropdown-item>
+          <el-dropdown-item>在庫保留</el-dropdown-item> -->
           <el-dropdown-item>営業確認中</el-dropdown-item>
           <el-dropdown-item>部長確認中</el-dropdown-item>
-          <el-dropdown-item>キャンセル中</el-dropdown-item>
-          <el-dropdown-item>キャンセル済み</el-dropdown-item>
+          <el-dropdown-item>部長確認済み</el-dropdown-item>
+          <!-- <el-dropdown-item>キャンセル中</el-dropdown-item>
+          <el-dropdown-item>キャンセル済み</el-dropdown-item> -->
         </el-dropdown-menu>
       </el-dropdown>
     </div>
     <el-row>
-      <el-button
-        type="success"
-        @click="select"
-        style="transform: translateX(10px)"
-        >検索<i class="el-icon-search" style="margin-left: 5px"></i
-      ></el-button>
-      <el-button
-        type="info"
-        style="margin-left: 30px; padding-left: 12px"
-        @click="reset"
-        >リセット<i class="el-icon-refresh" style="margin-left: 5px"></i
-      ></el-button>
-      <el-dropdown>
-        <el-button type="primary" style="margin-left: 30px">
+      <el-button type="success" @click="select" style="transform: translateX(10px); ">検索<i class="el-icon-search"
+          style="margin-left: 5px"></i></el-button>
+      <!-- <el-button type="info" style="margin-left: 30px; padding-left: 12px" @click="reset">リセット<i class="el-icon-refresh"
+          style="margin-left: 5px"></i></el-button>
+      <el-dropdown style="text-align: right;">
+        <el-button type="primary" style="margin-left : 30px;">
           エクスポート<i class="el-icon-arrow-down el-icon--right"></i>
         </el-button>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item v-on:click.native="expxlsx">.xlsx</el-dropdown-item>
           <el-dropdown-item v-on:click.native="exppdf">.pdf</el-dropdown-item>
         </el-dropdown-menu>
-      </el-dropdown>
-      <div style="padding: 10px">
-        <el-button
-          type="success"
-          round
-          style="float: right; margin-top: 40px"
-          @click="newOrder"
-          icon="el-icon-circle-plus"
-          >新規注文</el-button
-        >
-      </div>
+      </el-dropdown> -->
     </el-row>
     <div style="margin-top: 10px">
-      <el-table
-        :data="items"
-        border
-        stripe
-        :header-cell-style="{ background: '#eee' }"
-        @selection-change="handleSelectionChange"
-      >
+      <el-table :data="items" border stripe :header-cell-style="{ background: '#eee' }"
+        @selection-change="handleSelectionChange">
         <el-table-column type="selection"> </el-table-column>
+
         <el-table-column
           prop="orderNumber"
           label="注文ID"
           min-width="10%"
           header-align="center"
         >
+
         </el-table-column>
-        <el-table-column
-          prop="orderDate"
-          label="注文日"
-          min-width="10%"
-          align="center"
-          header-align="center"
-        >
+        <el-table-column prop="orderDate" label="注文番号" min-width="10%" align="center" header-align="center">
         </el-table-column>
-        <el-table-column
-          prop="orderQuantity"
-          label="注文数量"
-          min-width="10%"
-          align="right"
-          header-align="center"
-        >
+        <el-table-column prop="orderQuantity" label="商品種類数量" min-width="10%" align="center" header-align="center">
         </el-table-column>
-        <el-table-column
-          prop="totalPrice"
-          label="合計金額"
-          min-width="10%"
-          align="right"
-          header-align="right"
-        >
+        <el-table-column prop="totalPrice" label="合計金額" min-width="10%" align="center" header-align="center">
         </el-table-column>
-        <el-table-column
-          prop="orderStatus"
-          label="注文状況"
-          min-width="10%"
-          align="center"
-        >
-          <template slot="header">
+        <el-table-column prop="orderStatus" label="注文状況" min-width="10%" align="center">
+          <!-- <template slot="header">
             <el-dropdown>
-              <el-button type="text" style="">
+              <el-button type="text">
                 注文状況 <i class="el-icon-arrow-down el-icon--right"></i>
               </el-button>
               <el-dropdown-menu slot="dropdown">
@@ -125,26 +70,17 @@
                 <el-dropdown-item>在庫保留</el-dropdown-item>
                 <el-dropdown-item>営業確認中</el-dropdown-item>
                 <el-dropdown-item>部長確認中</el-dropdown-item>
+                <el-dropdown-item>部長確認済み</el-dropdown-item>
                 <el-dropdown-item>キャンセル中</el-dropdown-item>
                 <el-dropdown-item>キャンセル済み</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
-          </template>
+          </template> -->
         </el-table-column>
-        <el-table-column
-          prop="deliveryAddress"
-          label="お届け先"
-          min-width="30%"
-          header-align="center"
-        >
+        <el-table-column prop="deliveryAddress" label="お届け先" min-width="30%" header-align="center">
         </el-table-column>
-        <el-table-column
-          prop="deliveryMethod"
-          label="配送方法"
-          min-width="10%"
-          align="center"
-        >
-          <template slot="header">
+        <el-table-column prop="deliveryMethod" label="配送方法" min-width="10%" align="center">
+          <!-- <template slot="header">
             <el-dropdown>
               <el-button type="text" style="">
                 配送方法 <i class="el-icon-arrow-down el-icon--right"></i>
@@ -156,65 +92,56 @@
                 <el-dropdown-item>西濃運輸</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
-          </template>
+          </template> -->
         </el-table-column>
-        <el-table-column
-          prop="test"
-          label="操作"
-          min-width="10%"
-          align="center"
-        >
-          <el-tooltip content="详情" placement="top" @click.native="Details">
-            <el-button
-              type="primary"
-              icon="el-icon-edit"
-              circle
-              size="mini"
-            ></el-button>
+
+        <!-- <el-table-column prop="test" label="操作" min-width="10%" align="center">
+          <el-tooltip content="支払い" placement="top" @click.native="payment">
+            <el-button type="primary" icon="el-icon-edit" circle size="mini"></el-button>
+
           </el-tooltip>
-          <el-tooltip content="キャメル" placement="top" @click="cancelOrder">
-            <el-button
-              type="danger"
-              icon="el-icon-s-release"
-              circle
-              size="mini"
-            ></el-button>
+          <el-tooltip content="キャンセル" placement="top" @click="cancelOrder">
+            <el-button type="danger" icon="el-icon-s-release" circle size="mini"></el-button>
           </el-tooltip>
-          <el-tooltip content="再購入" placement="top" @click="reBuy">
-            <el-button
-              type="success"
-              icon="el-icon-goods"
-              circle
-              size="mini"
-            ></el-button>
+          <el-tooltip content="再購入" placement="top" @click.native="reBuy">
+            <el-button type="success" icon="el-icon-goods" circle size="mini"></el-button>
           </el-tooltip>
-        </el-table-column>
+        </el-table-column> -->
       </el-table>
       <div style="padding: 10px">
-        <el-pagination
-          @size-change="handleSizeChange"
-          @current-change="handleCurrentChange"
-          :current-page="pageNum"
-          :page-sizes="[5, 10, 15, 20]"
-          :page-size="pageSize"
-          layout="total, sizes, prev, pager, next, jumper"
-          :total="total"
-        >
+        <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="pageNum"
+          :page-sizes="[5, 10, 15, 20]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper"
+          :total="total">
         </el-pagination>
 
         <OrderDetails :isVisible.sync="isDialogVisible"></OrderDetails>
       </div>
+      <div style="padding: 10px">
+        <el-button type="success" round style="float: right; margin-top: 40px" @click="newOrder"
+          icon="el-icon-circle-plus">明細編集</el-button>
+      </div>
+    </div>
+    <div>
+      <payment :dialogTableVisible.sync="flag">
+
+
+      </payment>
+
+
     </div>
   </div>
 </template>
 
 
 <script>
-import OrderDetails from "@/views/OrderDetails.vue";
+
+
+import Payment from './Payment.vue';
 export default {
   name: "User",
   components: {
-    OrderDetails,
+    Payment,
+
   },
   data() {
     const end = new Date(); // 当前日期
@@ -259,37 +186,39 @@ export default {
 
       items: [
         {
-          orderNumber: "A001",
-          orderDate: "2024年5月9日",
-          orderQuantity: "1000個",
-          totalPrice: 999,
-          orderStatus: "受取",
+          orderNumber: "",
+          orderDate: "A0001",
+          orderQuantity: "5",
+          totalPrice: 1000000,
+          orderStatus: "営業確認中",
           deliveryAddress:
             "2 Chome-16-2 Sotokanda, Chiyoda City, Tokyo 101-0021",
           deliveryMethod: "ヤマト運輸",
         },
         {
-          orderNumber: "A002",
-          orderDate: "2024年5月10日",
-          orderQuantity: "1001個",
-          totalPrice: 999,
-          orderStatus: "受取",
+          orderNumber: "劉俊B0001",
+          orderDate: "B0001",
+          orderQuantity: "10",
+          totalPrice: 2000000,
+          orderStatus: "部長確認中",
           deliveryAddress:
             "3 Chome-11-3 Sotokanda, Chiyoda City, Tokyo 101-0021",
           deliveryMethod: "郵便局",
         },
         {
-          orderNumber: "A003",
-          orderDate: "2024年5月11日",
-          orderQuantity: "1002個",
-          totalPrice: 999,
-          orderStatus: "受取",
+          orderNumber: "劉俊C0001",
+          orderDate: "C0001",
+          orderQuantity: "15",
+          totalPrice: 3000000,
+          orderStatus: "部長確認済み",
           deliveryAddress: "2 Chome-4-1 Torigoe, Taito City, Tokyo 111-0054",
           deliveryMethod: "佐川急便",
         },
       ],
       value2: "",
+      flag: false
     };
+
   },
   props: {},
   methods: {
@@ -335,10 +264,16 @@ export default {
       console.log("pdf");
       //window.open("http://localhost:8084/user/exppdf");
     },
-    Details() {
+
+    payment() {
+      console.log("editOrder");
+      this.flag = true
     },
-    cancelOrder() {},
-    reBuy() {},
+    cancelOrder() { },
+    reBuy() {
+      console.log("test");
+      this.$router.push({ name: "Test" });
+    },
   },
 };
 </script>
